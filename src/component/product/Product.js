@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { prodctUrl } from '../../utils/constants/urlConstan'
-import axios from 'axios';
 import { get } from '../../services/httpService'
 import {
     DataGrid
@@ -8,6 +7,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import EditIcon from '@material-ui/icons/Edit';
+import DeleteSweepOutlinedIcon from '@material-ui/icons/DeleteSweepOutlined';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -22,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Product() {
     let [product, setProduct] = useState([]);
-    const [post, setpost] = useState([])
     useEffect(() => {
         get(prodctUrl.GetALLProduct).then(data => {
             if (data.success) {
@@ -40,7 +39,7 @@ function Product() {
 
     const columns = [
         {
-            field: "",
+            field: "xyz",
             headerName: "Edit",
             sortable: false,
             width: 100,
@@ -91,10 +90,21 @@ function Product() {
             field: 'TotalGst',
             headerName: 'TotalGst',
             width: 130,
-            // valueGetter: (params) =>
-            //     `${params.getValue('TotalGst') || '0'} %  ''}`,
         },
+        {
+            field: 'delete',
+            headerName: 'Delete',
+            width: 130,
+            cellClassName: 'mouse-pointer-cursor',
+            renderCell: (params) => (
+                <DeleteSweepOutlinedIcon onClick={() => handleDeleteProduct(params.row.id)} ></DeleteSweepOutlinedIcon>
+            )
+        },
+
     ];
+    const handleDeleteProduct = (id) => {
+
+    }
     const classes = useStyles();
     return (
 
@@ -109,10 +119,7 @@ function Product() {
             </div>
             <div className='productdata-outer-div'>
                 <DataGrid rows={product} columns={columns} pageSize={20} columnBuffer={2} />
-                <h1>{post.TotalGst}</h1>
             </div>
-
-
         </div>
     )
 }

@@ -5,8 +5,11 @@ const prodctUrl = {
     GetALLProduct: 'Product/GetAllProducts',
     GetProductById: 'Product/GetProductById/',
     SaveEditProduct: 'Product/SaveEditProduct'
-
-
 }
 
-module.exports = { baseUrl, prodctUrl }
+const WarehouseUrl = {
+    AddWarehouseUrl: 'WareHouse/AddNewWareHouse',
+    GetAllWarehouse: 'Warehouse/getAllWarehouse'
+}
+
+module.exports = { baseUrl, prodctUrl, WarehouseUrl }

@@ -4,6 +4,7 @@ import Inventory from './component/inventory/Inventory';
 import Product from './component/product/Product';
 import ProductAdd from './component//product/ProductAdd';
 import WareHouse from './component/warehouse/WareHouse';
+import AddWarehouse from './component/warehouse/AddWarehouse';
 
 function Router(params) {
     return (
@@ -26,6 +27,9 @@ function Router(params) {
                 </Route>
                 <Route path="/Edit/Product/:id">
                     <ProductAdd></ProductAdd>
+                </Route>
+                <Route path="/Add/WareHouse">
+                    <AddWarehouse />
                 </Route>
             </Switch>
         </BrowserRouter>

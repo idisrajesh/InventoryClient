@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-const initialFValues = {
+const initialValues = {
     Barcode: '',
     Brand: '',
     ProductName: '',
@@ -68,7 +68,7 @@ function ProductAdd() {
         setErrors,
         handleInputChange,
         resetForm
-    } = useForm(initialFValues, true, validate);
+    } = useForm(initialValues, true, validate);
 
     const onProductSave = (event) => {
         event.preventDefault()
